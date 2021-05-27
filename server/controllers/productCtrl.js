@@ -25,16 +25,26 @@ class APIfeatures {
         return this
     }
 
-    sorting(){}
-    
-    paginating(){}
+    sorting(){
+        if (this.queryString.sort){
+            const sortBy = this.queryString.sort.split(',').join(' ')
+            this.query = this.query.sort(sortBy)
+        } else {
+            this.query = this.query.sort('-createdAt')
+        }
+        return this
+    }
+
+    paginating(){
+        
+    }
 }
 
 const productCtrl = {
     getProducts: async(req, res) => {
         try {
             console.log(req.query)
-            const features = new APIfeatures(Products.find(), req.query).filtering()
+            const features = new APIfeatures(Products.find(), req.query).filtering().sorting()
             const products = await features.query
 
             res.json(products)

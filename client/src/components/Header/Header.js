@@ -24,13 +24,13 @@ function Header() {
                 <li><Link to="/login">Login & Register</Link></li>
 
                 <li>
-                    <img src={Close} alt="" width="30"/>
+                    <img src={Close} alt="" width="30" className="menu" />
                 </li>
             </ul>
 
             <div className="cart-icon">
                 <span>0</span>
-                <Link>
+                <Link to="/cart">
                     <img src={Cart} alt="" width="30" />
                 </Link>
             </div>
